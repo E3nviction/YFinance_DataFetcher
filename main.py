@@ -61,8 +61,7 @@ def get_earnings_deltas(ticker):
 
     return price_deltas
 
-# Example usage:
-ticker = "AAPL"  # Replace with your desired ticker
+ticker = "AAPL"
 deltas = get_earnings_deltas(ticker)
 for prev_date, curr_date, delta in deltas:
     if delta is not None:
