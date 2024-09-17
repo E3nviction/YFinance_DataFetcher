@@ -53,18 +53,18 @@ def get_earnings_deltas(ticker):
         current_price = get_price_on_date(ticker, current_date)
         
         if previous_price is not None and current_price is not None:
-            # Calculate the price delta
-            delta = current_price - previous_price
+            # Calculate the price delta in percentage
+            delta = ((current_price - previous_price) / previous_price) * 100
             price_deltas.append((previous_date, current_date, delta))
         else:
             price_deltas.append((previous_date, current_date, None))  # Handle missing data
 
     return price_deltas
 
-ticker = "AAPL"
+ticker = "TSLA"
 deltas = get_earnings_deltas(ticker)
 for prev_date, curr_date, delta in deltas:
     if delta is not None:
-        print(f"Price delta from {prev_date} to {curr_date}: {delta}")
+        print(f"Price delta from {prev_date} to {curr_date}: {abs(delta)}")
     else:
         print(f"Price data unavailable for {prev_date} or {curr_date}")
